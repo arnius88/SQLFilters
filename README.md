@@ -94,6 +94,25 @@ WHERE department = 'Marketing' AND office LIKE 'East%'
 Firstly, I asked SQL to select all data belonging to the `employees` table. The following line begins with `WHERE` followed by the condition `department = 'Marketing'`, which filters for employees belonging to the marketing department. Then, I included the `AND` operator followed by the condition `office LIKE 'East%'` in order to specify that I am looking for employees belonging to marketing that are also working in any office located in the East building. Once again, I found appropriate to use the `%` wildcard in conjunction with `LIKE` because each East building offices are followed by specific identification and I needed to include them all in the final output (visible in the second part of the screenshot).
 <br />
 
+<h3><p align="center">Retrieve employees in Finance or Sales:</h3>
+
+My team needed to perform a different security update on machines for employees in the Sales and Finance departments. The below shows how I used filters in SQL to create a query that identifies all employees in the Sales or Finance departments.<br />
+
+<img width="80%" alt="image" src="https://github.com/arnius88/SQLFilters/assets/152484037/520b94e1-1d53-4c4d-9b6e-fcbc414e3bed"><br />
+
+As shown in the screenshot, I completed this task by using the following syntax:<br />
+
+```
+SELECT * 
+FROM employees 
+WHERE department = 'Finance' OR department = 'Sales'
+```
+<br />
+
+The query helped me to retrieve information about employees either belonging to the Finance or Sales team. I started by selecting all data belonging to the `employees` table. Then, I included the `WHERE` clause in conjunction to the `OR` operator to filter through the `department` column in order to retrieve the data needed. In this case, I user `OR` because I was interested in retrieving information about employees belonging to either department. The following first and second conditions allowed me to be specific on the department that I needed to investigate.
+<br />
+
+
 
 <!--
  ```diff
