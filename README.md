@@ -55,6 +55,44 @@ To do this, I used a `WHERE` clause with a first condition `login_date = '2022-0
 The second part of the screenshot includes a quick view of the output obtained.
 <br />
 
+<h3><p align="center">Retrieve login attempts outside of Mexico:</h3>
+
+Some suspicious login activity was detected. However, the login attempts are almost certainly not coming from Mexico. For this reason, I was asked to investigate login attempts from locations that are _not_ Mexico.
+<br />
+
+<img width="80%" alt="image" src="https://github.com/arnius88/SQLFilters/assets/152484037/2fee359d-c99f-4b3e-b2ca-2440a305c27e"><br />
+
+To complete the investigation, I used the below query (also visible in the first part of the above screenshot):
+<br />
+
+```
+SELECT * 
+FROM log_in_attempts 
+WHERE NOT country LIKE 'MEX%'
+```
+<br />
+
+Firstly, I asked SQL to select all data belonging to the `log_in_attempts` table. The rest of the query retrieves any login attempts that were made outside of Mexico. To do this, I used a `WHERE` clause in conjunction with the `NOT` operator to look for countries (included in the `country` column) other than Mexico. This is followed by `LIKE`, which is the operator that allows to look for patterns when combined with wildcards such as `%`. Since the `country` column contains rows including both `Mexico` and `Mex` I felt it was appropriate to use the `%` wildcard following `MEX` in order to exclude both types of results.
+The second part of the screenshot shows a snippet of the output.
+<br />
+
+<h3><p align="center">Retrieve employees in Marketing:</h3>
+
+My team wanted to perform security updates on specific employee machines in the Marketing department. I was responsible for getting information on the machines to update.<br />
+
+<img width="80%" alt="image" src="https://github.com/arnius88/SQLFilters/assets/152484037/2a97fa1b-d06a-4903-b2c1-dd6ce43f11d3"><br />
+
+To achieve this I employed the following syntax, also visible in first part of the above screenshot:<br />
+
+```
+SELECT * 
+FROM employees 
+WHERE department = 'Marketing' AND office LIKE 'East%'
+```
+<br />
+
+Firstly, I asked SQL to select all data belonging to the `employees` table. The following line begins with `WHERE` followed by the condition `department = 'Marketing'`, which filters for employees belonging to the marketing department. Then, I included the `AND` operator followed by the condition `office LIKE 'East%'` in order to specify that I am looking for employees belonging to marketing that are also working in any office located in the East building. Once again, I found appropriate to use the `%` wildcard in conjunction with `LIKE` because each East building offices are followed by specific identification and I needed to include them all in the final output (visible in the second part of the screenshot).
+<br />
 
 
 <!--
