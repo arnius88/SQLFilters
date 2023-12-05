@@ -1,50 +1,61 @@
-<h1>Apply filters to SQL</h1>
+<h1>Apply Filters to SQL</h1>
 
 
-<h2>Description</h2>
-Project consists of a simple PowerShell script that walks the user through "zeroing out" (wiping) any drives that are connected to the system. The utility allows you to select the target disk and choose the number of passes that are performed. The PowerShell script will configure a diskpart script file based on the user's selections and then launch Diskpart to perform the disk sanitization.
+<h2>Project description and scenario</h2>
+
+I am working as part of the security team of a large company. My current assignment is to investigate some suspicious login attempts. Furthermore, I was asked to identify employees belonging to specified department who require their machines to be updated.
+The task requires to query the company’s database using SQL in order to retrieve the information needed and complete the investigation.
+<br />
+
+<h2>Project walk-through:</h2>
+
+<h3><p align="center">Retrieve after hours failed login attempts:</h3>
+
+In this example, I was asked to investigate any failed login attempts that happened after working hours (later than 18:00).
+<br />
+
+In order to carry out the investigation, I employed the following queried the log using the following syntax:
+<br />
+
+<img width="80%" alt="image" src="https://github.com/arnius88/SQLFilters/assets/152484037/ae46cd20-93d7-43b1-9f25-520af17542be">
+<br />
+
+The first part of the screenshot includes a query that filters for failed login attempts occurred after 18:00:
+<br />
+
+```
+SELECT *
+FROM log_in_attempts
+WHERE login_time > '18:00' AND success = FALSE
+```
+<br />
+
+I started by selecting all data belonging to the `log_in_attempts` table. Then I used a `WHERE` clause with a first condition `login_time > '18:00'`, requesting to filter for the login attempts that occurred strictly after 18:00. This is followed by an `AND` operator with the second condition `success = FALSE` which asks to filter for failed attempts only.
+The second part of the screenshot includes a quick view of the output obtained.<br />
+
+<h3><p align="center">Retrieve login attempts on specific dates:</h3>
+
+I was asked to investigate any login activity that happened on 2022-05-09 or on the day before due to a suspicious event that took place on the 2022-05-09.<br />
+
+<img width="80%" alt="image" src="https://github.com/arnius88/SQLFilters/assets/152484037/c2964955-1f36-4c6e-812a-68e8d253ec33"><br />
+
+In order to examine any suspicious login attempt involving two specific dates, as requested by the company, I used the following syntax (also visible in the first part of the screenshot):
+<br />
+
+```
+SELECT * 
+FROM log_in_attempts 
+WHERE login_date = '2022-05-09' OR login_date = '2022-05-08'
+```
 <br />
 
 
-<h2>Languages and Utilities Used</h2>
+I started by selecting all data belonging to the `log_in_attempts` table. Then I asked SQL to find login dates that occurred either on `'2022-05-09'` or on `'2022-05-08'`.
+To do this, I used a `WHERE` clause with a first condition `login_date = '2022-05-09'`, which filters for logins on 2022-05-09. Then I employed the operator `OR` followed by the second condition `login_date = '2022-05-08'`, to filter for any login attempts that occurred on 2022-05-08.
+The second part of the screenshot includes a quick view of the output obtained.
+<br />
 
-- <b>PowerShell</b> 
-- <b>Diskpart</b>
 
-<h2>Environments Used </h2>
-
-- <b>Windows 10</b> (21H2)
-
-<h2>Program walk-through:</h2>
-
-<p align="center">
-Launch the utility: <br/>
-<img src="https://i.imgur.com/62TgaWL.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Select the disk:  <br/>
-<img src="https://i.imgur.com/tcTyMUE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Enter the number of passes: <br/>
-<img src="https://i.imgur.com/nCIbXbg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Confirm your selection:  <br/>
-<img src="https://i.imgur.com/cdFHBiU.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Wait for process to complete (may take some time):  <br/>
-<img src="https://i.imgur.com/JL945Ga.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Sanitization complete:  <br/>
-<img src="https://i.imgur.com/K71yaM2.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-Observe the wiped disk:  <br/>
-<img src="https://i.imgur.com/AeZkvFQ.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
 
 <!--
  ```diff
