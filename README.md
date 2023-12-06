@@ -78,7 +78,7 @@ The second part of the screenshot shows a snippet of the output.
 
 <h3><p align="center">Retrieve employees in Marketing:</h3>
 
-My team wanted to perform security updates on specific machines in the Marketing department. I was responsible for getting information on the machines to update.<br />
+My team wanted to perform a security updates on specific machines in the Marketing department. I was responsible for getting information on the machines to update.<br />
 
 <img width="80%" alt="image" src="https://github.com/arnius88/SQLFilters/assets/152484037/2a97fa1b-d06a-4903-b2c1-dd6ce43f11d3"><br />
 
@@ -112,14 +112,30 @@ WHERE department = 'Finance' OR department = 'Sales'
 The query helped me to retrieve information about employees either belonging to the Finance or Sales team. I started by selecting all data belonging to the `employees` table. Then, I included the `WHERE` clause in conjunction with the `OR` operator to filter through the `department` column and retrieve the data needed. In this case, I user `OR` because I was interested in retrieving information about employees belonging to either department. The two conditions allowed me to be specific on the department that I needed to investigate.
 <br />
 
+<h3><p align="center">Retrieve all employees not in IT:</h3>
 
+My team needed to perform a security update on machines who did not belong to employees from the Information Technology department. To make the update, I first had to get information on these employees.
+<br />
 
-<!--
- ```diff
-- text in red
-+ text in green
-! text in orange
-# text in gray
-@@ text in purple (and bold)@@
+<img width="80%" alt="image" src="https://github.com/arnius88/SQLFilters/assets/152484037/41b468f4-1913-4a1b-a55d-164b2efb7f88"><br />
+
+The following demonstrates how I used SQL to retrieve information regarding employees in departments that were not Information Technology:
+<br />
+
 ```
---!>
+SELECT * 
+FROM employees 
+WHERE NOT department = 'Information Technology'
+```
+<br />
+
+After selecting all data included in the `employees` table, I used `WHERE NOT` followed by the condition `department = 'Information Technology'` to get an inclusive list of employees not belonging to the Information Technology department. A snippet of the output can be seen in the second part of the above screenshot.
+<br />
+
+<h3><p align="center">Project summary:</h3>
+
+This project has allowed me to showcase my skills with SQL, in particular the use of advanced filters. This involves the correct use of operators such as `AND`, `OR` and `NOT` based on the specific information that needs to be mined from the database. I also demonstrated how to use `LIKE` and the percentage sign (`%`) wildcard to filter for patterns.
+<br />
+
+
+
