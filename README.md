@@ -50,7 +50,7 @@ WHERE login_date = '2022-05-09' OR login_date = '2022-05-08'
 <br />
 
 
-I started by selecting all data belonging to the `log_in_attempts` table. Then I asked SQL to find login dates that occurred either on `'2022-05-09'` or on `'2022-05-08'`.
+I started by selecting all data belonging to the `log_in_attempts` table. Then I asked SQL to find login attempts that occurred either on `'2022-05-09'` or on `'2022-05-08'`.
 To do this, I used a `WHERE` clause with a first condition `login_date = '2022-05-09'`, which filters for logins on 2022-05-09. Then I employed the operator `OR` followed by the second condition `login_date = '2022-05-08'`, to filter for any login attempts that occurred on 2022-05-08.
 The second part of the screenshot includes a quick view of the output obtained.
 <br />
