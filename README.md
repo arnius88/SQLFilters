@@ -1,4 +1,4 @@
-<h1>Apply Filters to SQL</h1>
+<h1>Investigating Login Attempts with SQL</h1>
 
 
 <h2>Project description and scenario</h2>
